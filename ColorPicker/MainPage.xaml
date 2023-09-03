@@ -10,41 +10,78 @@
         <Color x:Key="Tertiary">#705c2e</Color>
     </ContentPage.Resources>
 
-    <Grid x:Name="Container" BackgroundColor="Black">
-        <Frame Margin="10,0,10,0" VerticalOptions="Center">
+    <Grid x:Name="Container">
+        <Frame
+            Margin="10,0,10,0"
+            HasShadow="True"
+            VerticalOptions="Center">
             <VerticalStackLayout Spacing="15" VerticalOptions="Center">
                 <Label
                     FontAttributes="Bold"
                     FontSize="Large"
                     HorizontalOptions="Center"
-                    Text="Color Picker" />
-                <Label Text="Red Value:" />
+                    Text="Color Picker">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS, Android" Value="Black" />
+                        </OnPlatform>
+                    </Label.TextColor>
+                </Label>
+                <Label Text="Red Value:">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS, Android" Value="Black" />
+                        </OnPlatform>
+                    </Label.TextColor>
+                </Label>
                 <Slider
                     x:Name="sldRed"
                     MaximumTrackColor="{StaticResource Secondary}"
                     MinimumTrackColor="{StaticResource Tertiary}"
-                    ThumbColor="{StaticResource Primary}" />
-                <Label Text="Green Value:" />
+                    ThumbColor="{StaticResource Primary}"
+                    ValueChanged="SliderValueChanged" />
+                <Label Text="Green Value:">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS, Android" Value="Black" />
+                        </OnPlatform>
+                    </Label.TextColor>
+                </Label>
                 <Slider
                     x:Name="sldGreen"
                     MaximumTrackColor="{StaticResource Secondary}"
                     MinimumTrackColor="{StaticResource Tertiary}"
-                    ThumbColor="{StaticResource Primary}" />
-                <Label Text="Blue Value:" />
+                    ThumbColor="{StaticResource Primary}"
+                    ValueChanged="SliderValueChanged" />
+                <Label Text="Blue Value:">
+                    <Label.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS, Android" Value="Black" />
+                        </OnPlatform>
+                    </Label.TextColor>
+                </Label>
                 <Slider
                     x:Name="sldBlue"
                     MaximumTrackColor="{StaticResource Secondary}"
                     MinimumTrackColor="{StaticResource Tertiary}"
-                    ThumbColor="{StaticResource Primary}" />
+                    ThumbColor="{StaticResource Primary}"
+                    ValueChanged="SliderValueChanged" />
                 <Frame CornerRadius="25" HorizontalOptions="Center">
                     <HorizontalStackLayout>
                         <Label
                             x:Name="lblHex"
                             HorizontalTextAlignment="Center"
-                            Text="HEX Value: #000000"
-                            VerticalOptions="Center" />
+                            Text="#000000"
+                            VerticalOptions="Center">
+                            <Label.TextColor>
+                                <OnPlatform x:TypeArguments="Color">
+                                    <On Platform="iOS, Android" Value="Black" />
+                                </OnPlatform>
+                            </Label.TextColor>
+                        </Label>
                         <ImageButton
                             Margin="10,0,0,0"
+                            Clicked="CopyClick"
                             HeightRequest="25"
                             Source="copy.svg"
                             VerticalOptions="Center"
@@ -54,7 +91,14 @@
                 <Button
                     x:Name="btnRandom"
                     Background="{StaticResource Primary}"
-                    Text="Generate Random Color" />
+                    Clicked="RandomColor"
+                    Text="Generate Random Color">
+                    <Button.TextColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS, Android" Value="White" />
+                        </OnPlatform>
+                    </Button.TextColor>
+                </Button>
             </VerticalStackLayout>
         </Frame>
     </Grid>
