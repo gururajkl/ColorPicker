@@ -29,6 +29,7 @@ namespace ColorPicker
         private void SetColorAndHexValue(Color color)
         {
             Container.BackgroundColor = color;
+            sts.StatusBarColor = color;
             hexValue = color.ToHex();
             lblHex.Text = hexValue;
         }
